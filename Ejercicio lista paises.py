@@ -1,0 +1,11 @@
+Paises = input("Ingrese países separados por comas: ")
+Separados = Paises.split(',')
+res = map(lambda x: str(x).capitalize(),Separados)
+Set = set(res)
+Ordenados = sorted(Set)
+print("Lista de países ordenados: ")
+print()
+list(Ordenados)
+for i in range(len(Ordenados)-1):
+    print(f'{Ordenados[i]}', end=', ')
+print(Ordenados[-1], end='.')
