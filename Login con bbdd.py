@@ -181,8 +181,6 @@ def menu():
             register()
         elif(Opc=='3'):
             delete()
-        else:
-            Opc='0'
 
 def main():
     init(autoreset=True)
@@ -190,11 +188,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# Si al hacer la conexión ponemos "isolation_level" = None se mandan al ejecutarse, si no hay que hacer conn.commit()
-
-#rows = cursor.execute('SELECT * FROM users')                                # Toda la bbdd
-#rows = cursor.execute('SELECT * FROM users WHERE username="repettoale"')    # Filtrando por usuario
-
-#for row in rows:
-#    print(row)
