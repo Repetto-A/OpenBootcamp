@@ -16,15 +16,15 @@ def valida(x,min,max):
 
 def agrega_alumno():
 
-    nombre = input("[6-20 chars] | Ingrese el nombre del alumno: ").capitalize()
-    apellido = input("[6-20 chars] | Ingrese el apellido del alumno: ").capitalize()
-    while already_exists(nombre,apellido) or valida(nombre,6,20) or valida(apellido,6,20):
+    nombre = input("[4-20 chars] | Ingrese el nombre del alumno: ").capitalize()
+    apellido = input("[4-20 chars] | Ingrese el apellido del alumno: ").capitalize()
+    while already_exists(nombre,apellido) or valida(nombre,4,20) or valida(apellido,4,20):
         if(already_exists(nombre,apellido)):
             print("El alumno que intenta cargar ya existe!")
         else:
             print("Longitud incorrecta!")
-        nombre = input("[6-20 chars] | Ingrese el nombre del alumno: ")
-        apellido = input("[6-20 chars] | Ingrese el apellido del alumno: ")
+        nombre = input("[4-20 chars] | Ingrese el nombre del alumno: ")
+        apellido = input("[4-20 chars] | Ingrese el apellido del alumno: ")
             
     id = ult_id()
     conn = sqlite3.connect('bbdd.db')
