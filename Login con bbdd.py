@@ -3,10 +3,8 @@ import getpass
 import os
 from colorama import init, Fore, Back, Style
 
-rutabbdd = r"D:\Ale\Programación\Cursos\OpenBootcamp\Python\BBDD\primerbbdd.db"
-
 def verifica_credenciales(username,password):
-    conn = sqlite3.connect(rutabbdd)
+    conn = sqlite3.connect('rutabbdd.db')
     cursor = conn.cursor()
     rows = cursor.execute(f'SELECT id FROM users WHERE username="{username}" and password="{password}"')
     data = rows.fetchone() # Devuelve un elemento o todos los coincidentes
@@ -88,7 +86,7 @@ OPCION 3 - Borrado de usuarios
             while res!='Y' and res!='N':
                 res =input("¿Está seguro que desea eliminar su cuenta? Y/N: ").upper()
             if res=='Y':
-                conn = sqlite3.connect(rutabbdd, isolation_level=None)
+                conn = sqlite3.connect('rutabbdd.db', isolation_level=None)
                 cursor = conn.cursor()
                 tmp = cursor.execute(f'DELETE FROM users WHERE username="{user}" and password="{password}"')
                 cursor.close()
@@ -97,7 +95,7 @@ OPCION 3 - Borrado de usuarios
                 input("<Enter para volver al menú principal>")
 
 def already_exists(user):
-    conn = sqlite3.connect(rutabbdd)
+    conn = sqlite3.connect('rutabbdd.db')
     cursor = conn.cursor()
     exists = cursor.execute(f'SELECT * FROM users WHERE username="{user}"')
     data = exists.fetchone()
@@ -149,7 +147,7 @@ OPCION 2 - Pánel de registro
             password = getpass.getpass(f"{Fore.CYAN+Style.BRIGHT}[V para salir] <8-20 chars> | Ingrese una contraseña: ")
         if(password.upper()!='V'):
             # Selección del id
-            conn = sqlite3.connect(rutabbdd)
+            conn = sqlite3.connect('rutabbdd.db')
             cursor = conn.cursor()
             ultimo_id = cursor.execute('SELECT id FROM users')
             data = ultimo_id.fetchall()
